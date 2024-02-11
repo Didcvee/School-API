@@ -1,5 +1,6 @@
 package com.javatechie.controller;
 
+import com.javatechie.config.Role;
 import com.javatechie.dto.AuthRequest;
 import com.javatechie.entity.UserCredential;
 import com.javatechie.service.AuthService;
@@ -20,14 +21,16 @@ public class AuthController {
 
     @PostMapping("/register")
     public String addNewUser(@RequestBody UserCredential user) {
+        user.setRoles(Role.STUDENT.name());
         return service.saveUser(user);
     }
 
     @PostMapping("/token")
     public String getToken(@RequestBody AuthRequest authRequest) {
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+        System.out.println(authenticate);
         if (authenticate.isAuthenticated()) {
-            return service.generateToken(authRequest.getUsername());
+            return service.generateToken(authRequest.getUsername(), Role.STUDENT);
         } else {
             throw new RuntimeException("invalid access");
         }

@@ -1,5 +1,6 @@
 package com.javatechie.service;
 
+import com.javatechie.config.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -27,8 +28,9 @@ public class JwtService {
     }
 
 
-    public String generateToken(String userName) {
+    public String generateToken(String userName, Role role) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("role", role); // Добавляем роль в клеймы токена
         return createToken(claims, userName);
     }
 

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
@@ -5,6 +6,7 @@
     <file type="web" url="file://$PROJECT_DIR$/dictionary-service" />
     <file type="web" url="file://$PROJECT_DIR$/gateway" />
     <file type="web" url="file://$PROJECT_DIR$/main-service" />
+    <file type="web" url="file://$PROJECT_DIR$/schedule-service" />
     <file type="web" url="file://$PROJECT_DIR$/security" />
   </component>
   <component name="MavenProjectsManager">

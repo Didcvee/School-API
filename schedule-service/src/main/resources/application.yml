@@ -1,0 +1,9 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    password: 2121
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/schedule
+    driver-class-name: org.postgresql.Driver

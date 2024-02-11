@@ -1,5 +1,6 @@
 package com.javatechie.service;
 
+import com.javatechie.config.Role;
 import com.javatechie.entity.UserCredential;
 import com.javatechie.repository.UserCredentialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class AuthService {
         return "user added to the system";
     }
 
-    public String generateToken(String username) {
-        return jwtService.generateToken(username);
+    public String generateToken(String username, Role role) {
+        return jwtService.generateToken(username, role);
     }
 
     public void validateToken(String token) {

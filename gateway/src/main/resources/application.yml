@@ -2,20 +2,20 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: swiggy-app
-          uri: lb://SWIGGY-APP
-          predicates:
-            - Path=/swiggy/**
-          filters:
-            - AuthenticationFilter
-
-
-        - id: restaurant-service
-          uri: lb://RESTAURANT-SERVICE
-          predicates:
-            - Path=/restaurant/**
-          filters:
-            - AuthenticationFilter
+#        - id: swiggy-app
+#          uri: lb://SWIGGY-APP
+#          predicates:
+#            - Path=/swiggy/**
+#          filters:
+#            - AuthenticationFilter
+#
+#
+#        - id: restaurant-service
+#          uri: lb://RESTAURANT-SERVICE
+#          predicates:
+#            - Path=/restaurant/**
+#          filters:
+#            - AuthenticationFilter
 
         - id: identity-service
           uri: lb://IDENTITY-SERVICE
@@ -23,6 +23,25 @@ spring:
             - Path=/auth/**
           filters:
             - AuthenticationFilter
+
+
+        - id: secure_route_admin
+          uri: http://localhost:8082
+          predicates:
+            - Path=/restaurant
+          filters:
+            - name: AuthorizationFilter
+              args:
+                role: STUDENT
+
+        - id: secure_route_user
+          uri: http://localhost:8082
+          predicates:
+            - Path=/restaurant/orders/status/**
+          filters:
+            - name: AuthorizationFilter
+              args:
+                role: ROLE_USER
 
   application:
     name: SWIGGY-GATEWAY
