@@ -24,8 +24,8 @@ public class TeacherController {
     public ResponseEntity<Page<Teacher>> getTeachers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        Page<Teacher> yourEntities = teacherService.findAll(page, size);
-        return new ResponseEntity<>(yourEntities, HttpStatus.OK);
+        Page<Teacher> teachers = teacherService.findAll(page, size);
+        return new ResponseEntity<>(teachers, HttpStatus.OK);
     }
     @GetMapping("/{id}")
     public ResponseEntity<Teacher> getTeacher(

@@ -8,7 +8,6 @@ import lombok.Data;
 @Table(name = "subject")
 public class Subject {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String subjectName;
     // Дополнительные поля и методы
 }
