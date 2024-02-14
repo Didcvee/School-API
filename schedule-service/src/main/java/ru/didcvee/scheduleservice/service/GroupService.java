@@ -1,6 +1,7 @@
 package ru.didcvee.scheduleservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
@@ -80,5 +81,16 @@ public class GroupService {
         group.setGroupNumber(lessons.get(0).getGroup().getGroupNumber());
 
         return group;
+    }
+    @Transactional
+    public void addGroup(Group group){
+        String sql = "INSERT INTO group_ (group_number) VALUES (?)";
+        try {
+            jdbcTemplate.update(sql, group.getGroupNumber());
+        } catch (DataAccessException e) {
+            // Обработка ошибки при сохранении группы
+            System.err.println("Ошибка при сохранении группы: " + e.getMessage());
+        }
+
     }
 }
