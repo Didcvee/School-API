@@ -39,11 +39,9 @@ public class GroupController {
             @RequestBody GroupDto group
     ) {
         groupService.addGroup(group);
-
         if (!group.getLessons().isEmpty()){
             lessonService.saveLesson(group.getLessons());
         }
-
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @PatchMapping("/{id}")
@@ -53,7 +51,8 @@ public class GroupController {
             ) {
         group.setGroupNumber(groupNumber);
         groupService.updateGroup();
-        if (group.getLessons().isEmpty()) {
+
+        if (!group.getLessons().isEmpty()) {
             lessonService.updateLessons(group.getLessons());
         }
         return ResponseEntity.ok().build();
