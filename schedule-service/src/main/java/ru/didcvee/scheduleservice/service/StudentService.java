@@ -3,14 +3,17 @@ package ru.didcvee.scheduleservice.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.didcvee.scheduleservice.dto.StudentDto;
+import ru.didcvee.scheduleservice.entity.Group;
 import ru.didcvee.scheduleservice.entity.Student;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 @Service
@@ -22,19 +25,21 @@ public class StudentService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    private final RowMapper<StudentDto> groupRowMapper = ((rs, rowNum) -> {
+        StudentDto student = new StudentDto();
+        student.setId(rs.getInt("id"));
+        student.setFirstname(rs.getString("firstname"));
+        student.setLastname(rs.getString("lastname"));
+        student.setPatronymic(rs.getString("patronymic"));
+        student.setAge(rs.getInt("age"));
+        student.setGroupNumber(rs.getInt("group_number"));
+        return student;
+    });
+
     public List<StudentDto> getAllStudents(int pageSize, int pageNumber) {
         try {
             int offset = pageNumber * pageSize;
-            return jdbcTemplate.query("SELECT * FROM student LIMIT ? OFFSET ?", new Object[]{pageSize, offset}, (rs, rowNum) -> {
-                StudentDto student = new StudentDto();
-                student.setId(rs.getInt("id"));
-                student.setFirstname(rs.getString("firstname"));
-                student.setLastname(rs.getString("lastname"));
-                student.setPatronymic(rs.getString("patronymic"));
-                student.setAge(rs.getInt("age"));
-                student.setGroupNumber(rs.getInt("group_number"));
-                return student;
-            });
+            return jdbcTemplate.query("SELECT * FROM student LIMIT ? OFFSET ?", new Object[]{pageSize, offset}, groupRowMapper);
         } catch (DataAccessException e) {
             throw new RuntimeException();
         }
@@ -44,16 +49,7 @@ public class StudentService {
     public StudentDto getStudentById(int id) {
         try {
             return jdbcTemplate.queryForObject("SELECT * FROM student WHERE id = ?", new Object[]{id},
-                    (rs, rowNum) -> {
-                        StudentDto student = new StudentDto();
-                        student.setId(rs.getInt("id"));
-                        student.setFirstname(rs.getString("firstname"));
-                        student.setLastname(rs.getString("lastname"));
-                        student.setPatronymic(rs.getString("patronymic"));
-                        student.setAge(rs.getInt("age"));
-                        student.setGroupNumber(rs.getInt("group_number"));
-                        return student;
-                    });
+                    groupRowMapper);
         } catch (DataAccessException e) {
             throw new RuntimeException();
         }

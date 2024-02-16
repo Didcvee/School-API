@@ -4,13 +4,18 @@ CREATE TABLE subject (
     subject_name VARCHAR(255) PRIMARY KEY
 );
 
+CREATE TABLE teacher_subject (
+                                 teacher_id INTEGER REFERENCES teacher (id) ON DELETE CASCADE,
+                                 subject_name VARCHAR(255) REFERENCES subject (subject_name) ON DELETE CASCADE,
+                                 PRIMARY KEY (teacher_id, subject_name)
+);
+
 CREATE TABLE teacher (
     id SERIAL PRIMARY KEY,
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
     patronymic VARCHAR(255),
-    age INTEGER,
-    item_name VARCHAR(255) REFERENCES subject (subject_name) ON DELETE CASCADE
+    age INTEGER
 );
 
 CREATE TABLE group_ (

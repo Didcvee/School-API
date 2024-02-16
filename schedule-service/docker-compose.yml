@@ -1,0 +1,29 @@
+version: '3.1' # версия docker-compose
+
+volumes:
+  pg_schedule: # сюда, в файловой системе нашего компьютера будут сохраняться файлы докер-контейнера
+
+services:
+  schedule_db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=2121
+      - POSTGRES_DB=schedule_db
+    volumes:
+      - pg_schedule:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5433:5432" # справой стороны указываем порт,
+      # который будет открыт у докер-контейнера, а слевой части указываем порт нашего компьютера
+      # (при обращени на порт 5433 нашего компьютера, данное обращение будет перенаправлено в порт 5432 докер-контейнера)
+
+  app:
+    restart: always
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - schedule_db
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:postgresql://schedule_db:5432/schedule_db'

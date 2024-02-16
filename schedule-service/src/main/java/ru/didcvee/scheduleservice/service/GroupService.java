@@ -6,18 +6,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.didcvee.scheduleservice.dto.GroupDto;
 import ru.didcvee.scheduleservice.entity.Group;
 import ru.didcvee.scheduleservice.entity.Lesson;
 import ru.didcvee.scheduleservice.entity.Subject;
 import ru.didcvee.scheduleservice.entity.Teacher;
-import ru.didcvee.scheduleservice.repo.GroupRepo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
 public class GroupService {
-    private final GroupRepo groupRepo;
     private final JdbcTemplate jdbcTemplate;
     private final RowMapper<Group> groupRowMapper = ((rs, rowNum) -> {
         Group group = new Group();
@@ -25,8 +25,7 @@ public class GroupService {
         return group;
     });
     @Autowired
-    public GroupService(GroupRepo groupRepo, JdbcTemplate jdbcTemplate) {
-        this.groupRepo = groupRepo;
+    public GroupService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
     @Transactional(readOnly = true)
@@ -41,7 +40,7 @@ public class GroupService {
     @Transactional(readOnly = true)
     public Group findLessonsByGroupNumber(int groupNumber) {
         String sql = "SELECT l.id, l.lesson_number, l.week_day, l.subject_name, l.group_number, l.teacher_id, " +
-                "t.firstname, t.lastname, t.patronymic, t.age, t.item_name " +
+                "t.firstname, t.lastname, t.patronymic, t.age " +
                 "FROM lesson l " +
                 "JOIN group_ g ON l.group_number = g.group_number " +
                 "JOIN teacher t ON l.teacher_id = t.id " +
@@ -67,7 +66,7 @@ public class GroupService {
             teacher1.setLastname(rs.getString("lastname"));
             teacher1.setPatronymic(rs.getString("patronymic"));
             teacher1.setAge(rs.getInt("age"));
-            teacher1.setSubject(subject);
+            teacher1.setSubjects(new ArrayList<>());
 
             lesson.setTeacher(teacher1);
             return lesson;
@@ -83,14 +82,27 @@ public class GroupService {
         return group;
     }
     @Transactional
-    public void addGroup(Group group){
+    public void addGroup(GroupDto group){
         String sql = "INSERT INTO group_ (group_number) VALUES (?)";
         try {
+            System.out.println(group);
             jdbcTemplate.update(sql, group.getGroupNumber());
         } catch (DataAccessException e) {
-            // Обработка ошибки при сохранении группы
-            System.err.println("Ошибка при сохранении группы: " + e.getMessage());
+            throw new RuntimeException();
         }
+
+    }
+    @Transactional
+    public void deleteGroup(String id) {
+        String sql = "DELETE FROM GROUP_ WHERE group_number = ?";
+        try {
+            jdbcTemplate.update(sql, id);
+        } catch (DataAccessException e) {
+            throw new RuntimeException();
+        }
+    }
+    @Transactional
+    public void updateGroup(){
 
     }
 }

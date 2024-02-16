@@ -21,7 +21,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public String addNewUser(@RequestBody UserCredential user) {
-        user.setRoles(Role.STUDENT.name());
+        user.setRoles(Role.STUDENT.name()); // if Role Student RestTemplate or 3 endpoint for register + restTemplate
         return service.saveUser(user);
     }
 

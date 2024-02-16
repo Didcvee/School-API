@@ -1,35 +1,63 @@
 package ru.didcvee.scheduleservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.didcvee.scheduleservice.entity.Subject;
-import ru.didcvee.scheduleservice.repo.SubjectRepo;
-
-import java.util.Optional;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class SubjectService {
-    private final SubjectRepo subjectRepo;
+    private final JdbcTemplate jdbcTemplate;
     @Autowired
-    public SubjectService(SubjectRepo subjectRepo) {
-        this.subjectRepo = subjectRepo;
+    public SubjectService(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Subject findById(String subject){
-        Optional<Subject> subjectFromDb = subjectRepo.findBySubjectName(subject);
-        if (subjectFromDb.isEmpty()) {
-            throw new RuntimeException(subjectFromDb + "not found");
+    public void createSubject(String subjectName) {
+        String sql = "INSERT INTO subject (subject_name) VALUES (?)";
+
+        try {
+            jdbcTemplate.update(sql, subjectName);
+        } catch (DataAccessException e) {
+            throw new RuntimeException();
         }
-        return subjectFromDb.get();
     }
 
-    public Page<Subject> findAll(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return subjectRepo.findAll(pageable);
+    @Transactional(readOnly = true)
+    public String getSubjectByName(String subjectName) {
+        String sql = "SELECT subject_name FROM subject WHERE subject_name = ?";
+
+        try {
+            return jdbcTemplate.queryForObject(sql, String.class, subjectName);
+        } catch (EmptyResultDataAccessException e) {
+            return null; // Если запись не найдена
+        } catch (DataAccessException e) {
+            // Обработка ошибок, например, логирование или выброс исключения
+            return null;
+        }
     }
+    public void updateSubject(String oldSubjectName, String newSubjectName) {
+        String sql = "UPDATE subject SET subject_name = ? WHERE subject_name = ?";
+        try {
+            jdbcTemplate.update(sql, newSubjectName, oldSubjectName);
+        } catch (DataAccessException e) {
+            // Обработка ошибок, например, логирование или выброс исключения
+        }
+    }
+
+    public void deleteSubject(String subjectName) {
+        String sql = "DELETE FROM subject WHERE subject_name = ?";
+
+        try {
+            jdbcTemplate.update(sql, subjectName);
+        } catch (DataAccessException e) {
+            // Обработка ошибок, например, логирование или выброс исключения
+        }
+    }
+
+
+
 }
