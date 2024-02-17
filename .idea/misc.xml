@@ -2,6 +2,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/aloha-service-registry" />
+    <file type="web" url="file://$PROJECT_DIR$/diary-service" />
     <file type="web" url="file://$PROJECT_DIR$/dictionary-service" />
     <file type="web" url="file://$PROJECT_DIR$/gateway" />
     <file type="web" url="file://$PROJECT_DIR$/main-service" />
