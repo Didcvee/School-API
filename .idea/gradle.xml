@@ -21,6 +21,14 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/diary-service-consumer" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/diary-service-consumer" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/dictionary-service" />
         <option name="modules">
           <set>

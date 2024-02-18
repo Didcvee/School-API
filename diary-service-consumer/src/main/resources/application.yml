@@ -4,4 +4,6 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
 server:
-  port: 8081
+  port: 8082
+
+topics: grade-topic
