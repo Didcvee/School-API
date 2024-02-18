@@ -10,22 +10,25 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class Grade {
-    private int id;
+
     private String weekDay;
     private LocalDateTime timeFrom;
+    private LocalDateTime timeTo;
     private Mark mark;
     private String teacherUsername;
-    private String subjectName;
+    private String subject;
+    private String studentUsername;
 
     @Override
     public String toString() {
         return "Grade{" +
-                "id=" + id +
-                ", weekDay='" + weekDay + '\'' +
+                "weekDay='" + weekDay + '\'' +
                 ", timeFrom=" + timeFrom +
+                ", timeTo=" + timeTo +
                 ", mark=" + mark +
                 ", teacherUsername='" + teacherUsername + '\'' +
-                ", subjectName='" + subjectName + '\'' +
+                ", subject='" + subject + '\'' +
+                ", studentUsername='" + studentUsername + '\'' +
                 '}';
     }
 }

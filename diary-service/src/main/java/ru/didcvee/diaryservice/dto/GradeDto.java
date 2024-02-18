@@ -15,8 +15,10 @@ public class GradeDto {
     private int id;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeFrom;
+    private LocalDateTime timeTo;
     private String weekDay;
     private Mark mark;
     private String teacherUsername;
     private String subjectName;
+    private String studentUsername;
 }
