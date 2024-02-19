@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpccommon";
+option java_outer_classname = "GeneratorProto";
+option objc_class_prefix = "RTG";
+
+
+
+package service;
+
+service GradeServer {
+
+  rpc GetGrade(GrpcGradeRequest) returns (GRPCGrade);
+
+}
+
+message GRPCGrade {
+  int64 id = 1;
+  string mark = 2;
+}
+
+message GrpcGradeRequest {
+  int64 id = 1;
+}

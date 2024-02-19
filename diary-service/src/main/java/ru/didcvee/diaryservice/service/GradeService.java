@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 import ru.didcvee.diaryservice.dto.GradeDto;
+import ru.didcvee.diaryservice.entity.GradeTest;
 import ru.didcvee.diaryservice.entity.Mark;
 
 import java.time.LocalDateTime;
@@ -43,6 +44,17 @@ public class GradeService {
         String sql = "select * from grade where subject datefrom dateto teacherusername group";
         try {
             return jdbcTemplate.query(sql, gradeDtoRowMapper);
+        } catch (DataAccessException e) {
+            throw new RuntimeException();
+        }
+    }
+    private final RowMapper<GradeTest> gradeMapper = (rs, rowNum) -> {
+        return new GradeTest(rs.getString("mark"), rs.getInt("id"));
+    };
+    public GradeTest getGradeById(long id) {
+        String sql = "select * from grade___ where id = ?";
+        try {
+            return jdbcTemplate.queryForObject(sql,new Object[]{id}, gradeMapper);
         } catch (DataAccessException e) {
             throw new RuntimeException();
         }
