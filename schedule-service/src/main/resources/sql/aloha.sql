@@ -45,3 +45,9 @@ CREATE TABLE lesson (
 
 );
 
+create table teacher_group (
+                               teacher_id INTEGER REFERENCES teacher (id) ON DELETE CASCADE,
+                               group_number VARCHAR(255) REFERENCES group_ (group_number) ON DELETE CASCADE,
+                               PRIMARY KEY (teacher_id, group_number)
+)
+
