@@ -24,14 +24,21 @@ public class GRPCGradeService extends GradeServerGrpc.GradeServerImplBase {
         Timestamp timestamp = request.getDateFrom();
         Timestamp timestamp1 = request.getDateTo();
         LocalDateTime dateFrom = LocalDateTime.ofEpochSecond(timestamp.getSeconds(), timestamp.getNanos(), ZoneOffset.UTC);
+        System.out.println(dateFrom);
         LocalDateTime dateTo = LocalDateTime.ofEpochSecond(timestamp1.getSeconds(), timestamp1.getNanos(), ZoneOffset.UTC);
+        System.out.println(dateTo);
         List<Grade> gradeList = gradeService.getGradeByStudentIdDateFromDateTo(request.getStudentUsername(),
                 dateFrom,
                 dateTo);
+        GRPCGrade grade = GRPCGrade.newBuilder()
+                .setMark(gradeList.get(0).getStudentUsername())
+                .build();
         GradeListResponse gradeListResponse = GradeListResponse.newBuilder()
-                        .addGrades()
-                build();
-        responseObserver.onNext();
+                .addGrades(grade)
+                .build();
+        responseObserver.onNext(gradeListResponse);
+        System.out.println(gradeListResponse);
+        responseObserver.onCompleted();
     }
 
     @Override

@@ -3,10 +3,6 @@
 
 package com.example.grpccommon.service;
 
-import ru.didcvee.diaryservice.entity.Grade;
-
-import java.util.Iterator;
-
 /**
  * Protobuf type {@code service.GradeListResponse}
  */
@@ -596,7 +592,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .service.GRPCGrade grades = 1;</code>
      */
     public Builder addAllGrades(
-            Iterator<Grade> values) {
+        java.lang.Iterable<? extends com.example.grpccommon.service.GRPCGrade> values) {
       if (gradesBuilder_ == null) {
         ensureGradesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(

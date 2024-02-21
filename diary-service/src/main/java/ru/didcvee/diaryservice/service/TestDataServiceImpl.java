@@ -24,9 +24,9 @@ public class TestDataServiceImpl implements TestDataService {
             executorService.scheduleAtFixedRate(
                     () -> {
                         Grade grade = new Grade();
-                        grade.setTeacherUsername("mmm");
-                        grade.setMark(Mark.FIVE);
-                        grade.setTimeFrom(LocalDateTime.now());
+//                        grade.setTeacherUsername("mmm");
+//                        grade.setMark(Mark.FIVE);
+//                        grade.setTimeFrom(LocalDateTime.now());
                         kafkaGradeService.send(grade);
                     },
                     0,
