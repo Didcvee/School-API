@@ -1,17 +1,19 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "com.example.grpccommon";
+option java_package = "com.example.grpccommon.service";
 option java_outer_classname = "GeneratorProto";
 option objc_class_prefix = "RTG";
 
-
+import "google/protobuf/timestamp.proto";
 
 package service;
 
 service GradeServer {
 
-  rpc GetGrade(GrpcGradeRequest) returns (GRPCGrade);
+  rpc GetGradeFromStudentByDateFromDateTo(GrpcGradeRequestFromStudent) returns (GradeListResponse);
+
+  rpc GetGradeFromTeacherByGroupAndSubjectDateFromDateTo(GrpcGradeRequestFromTeacher) returns (GradeListResponse);
 
 }
 
@@ -20,6 +22,20 @@ message GRPCGrade {
   string mark = 2;
 }
 
-message GrpcGradeRequest {
-  int64 id = 1;
+message GrpcGradeRequestFromStudent {
+  string studentUsername = 1;
+  google.protobuf.Timestamp dateFrom = 2;
+  google.protobuf.Timestamp dateTo = 3;
+}
+
+message GradeListResponse {
+  repeated GRPCGrade grades = 1;
+}
+
+message GrpcGradeRequestFromTeacher {
+  string teacherUsername = 1;
+  google.protobuf.Timestamp dateFrom = 2;
+  google.protobuf.Timestamp dateTo = 3;
+  string subject = 4;
+  string group = 5;
 }

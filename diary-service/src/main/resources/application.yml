@@ -12,6 +12,12 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres
 
+  data:
+    mongodb:
+      database: grade
+      port: 27017
+      host: localhost
+
 server:
   port: 8081
 

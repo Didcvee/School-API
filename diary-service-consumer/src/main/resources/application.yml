@@ -3,6 +3,12 @@ spring:
     import: optional:file:.env[.properties]
   kafka:
     bootstrap-servers: localhost:9092
+  data:
+    mongodb:
+      database: grade
+      port: 27017
+      host: localhost
+
 server:
   port: 8082
 

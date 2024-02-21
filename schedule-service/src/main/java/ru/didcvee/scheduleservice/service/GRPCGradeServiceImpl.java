@@ -1,13 +1,12 @@
 package ru.didcvee.scheduleservice.service;
 
-import com.example.grpccommon.GRPCGrade;
-import com.example.grpccommon.GradeServerGrpc;
-import com.example.grpccommon.GrpcGradeRequest;
+import com.example.grpccommon.service.GradeListResponse;
+import com.example.grpccommon.service.GradeServerGrpc;
+import com.example.grpccommon.service.GrpcGradeRequestFromStudent;
+import com.google.protobuf.Timestamp;
 import lombok.RequiredArgsConstructor;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
-import ru.didcvee.scheduleservice.entity.other.Grade;
-import ru.didcvee.scheduleservice.entity.other.GradeRequest;
 
 @Service
 @RequiredArgsConstructor
@@ -20,13 +19,12 @@ public class GRPCGradeServiceImpl implements GRPCGradeService{
 
 
     @Override
-    public Grade get(GradeRequest gradeRequest) {
-        GrpcGradeRequest request = GrpcGradeRequest.newBuilder()
-                .setId(gradeRequest.getId())
+    public GradeListResponse get(String studentUsername, Timestamp dateFrom, Timestamp dateTo) {
+        GrpcGradeRequestFromStudent request1 = GrpcGradeRequestFromStudent.newBuilder()
+                .setStudentUsername("Artem")
+                .setDateFrom(dateFrom)
+                .setDateTo(dateTo)
                 .build();
-        GRPCGrade grade = stub.getGrade(request);
-        Grade grade1 = new Grade(Integer.parseInt(String.valueOf(grade.getId())), grade.getMark());
-        System.out.println(grade1);
-        return grade1;
+        return stub.getGradeFromStudentByDateFromDateTo(request1);
     }
 }

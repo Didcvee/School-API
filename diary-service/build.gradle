@@ -45,6 +45,9 @@ dependencies {
     implementation 'com.jcabi:jcabi-xml:0.29.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.mongodb:mongodb-driver-sync'
+
     implementation 'org.postgresql:postgresql:42.7.1'
     // https://mvnrepository.com/artifact/org.liquibase/liquibase-core
     implementation 'org.liquibase:liquibase-core:4.26.0'

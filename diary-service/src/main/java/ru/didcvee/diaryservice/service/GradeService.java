@@ -7,8 +7,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 import ru.didcvee.diaryservice.dto.GradeDto;
+import ru.didcvee.diaryservice.entity.Grade;
 import ru.didcvee.diaryservice.entity.GradeTest;
 import ru.didcvee.diaryservice.entity.Mark;
+import ru.didcvee.diaryservice.repo.GradeRepository;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,47 +19,19 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class GradeService {
-    private final JdbcTemplate jdbcTemplate;
-    private final RowMapper gradeDtoRowMapper = (rs, rowNum) -> {
-        GradeDto gradeDto = new GradeDto();
-        gradeDto.setTeacherUsername(rs.getString("teacherusername"));
-        gradeDto.setStudentUsername("studentusername");
-        gradeDto.setSubjectName(rs.getString("subject"));
+    private final GradeRepository gradeRepository;
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        gradeDto.setTimeFrom(LocalDateTime.parse(rs.getString("dateFrom"), formatter));
-        gradeDto.setTimeTo(LocalDateTime.parse(rs.getString("dateto"), formatter));
-        gradeDto.setWeekDay(rs.getString("weekday"));
-        gradeDto.setMark(Mark.valueOf(rs.getString("mark")));
-        return gradeDto;
-    };
-    public List<GradeDto> getStudentGradeFromTo(LocalDateTime dateFrom, LocalDateTime dateTo, String studentUsername) {
-        String sql = "select * from grade where datefrom>? and datefrom<? and studentusername=?";
-        try {
-            return jdbcTemplate.query(sql, gradeDtoRowMapper);
-        } catch (DataAccessException e) {
-            throw new RuntimeException();
-        }
-    }
-    //GRPC
-    public List<GradeDto> getTeacherGradeByGroupAndSubject() {
-        String sql = "select * from grade where subject datefrom dateto teacherusername group";
-        try {
-            return jdbcTemplate.query(sql, gradeDtoRowMapper);
-        } catch (DataAccessException e) {
-            throw new RuntimeException();
-        }
-    }
-    private final RowMapper<GradeTest> gradeMapper = (rs, rowNum) -> {
-        return new GradeTest(rs.getString("mark"), rs.getInt("id"));
-    };
-    public GradeTest getGradeById(long id) {
-        String sql = "select * from grade___ where id = ?";
-        try {
-            return jdbcTemplate.queryForObject(sql,new Object[]{id}, gradeMapper);
-        } catch (DataAccessException e) {
-            throw new RuntimeException();
-        }
+    public List<Grade> getGradeByStudentIdDateFromDateTo(String studentUsername,
+                                                         LocalDateTime dateFrom,
+                                                         LocalDateTime dateTo) {
+        return gradeRepository.getGradeByStudentIdDateFromDateTo(studentUsername, dateFrom, dateTo);
     }
 
+    public List<Grade> getGradeByTeacherHisGroupAndSubjectDateFromDateTo(String teacherUsername,
+                                                                         String subject,
+                                                                         int groupNumber,
+                                                                         LocalDateTime dateFrom,
+                                                                         LocalDateTime dateTo) {
+        return gradeRepository.getGradeByTeacherHisGroupAndSubjectDateFromDateTo(teacherUsername, subject, groupNumber, dateFrom, dateTo);
+    }
 }
