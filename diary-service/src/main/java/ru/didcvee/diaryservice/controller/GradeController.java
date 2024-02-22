@@ -33,9 +33,9 @@ public class GradeController {
 
     @PostMapping("/send")
     public void send(
-            @RequestBody GradeDto gradeDto
+            @RequestBody Grade grade
     ) {
-        Grade grade = gradeMapper.toEntity(gradeDto);
+
         kafkaGradeService.send(grade);
     }
 

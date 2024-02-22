@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 import ru.didcvee.diaryserviceconsumer.entity.Grade;
 
+import java.time.LocalDateTime;
+
 @Repository
 public class GradeRepository {
     private final MongoTemplate mongoTemplate;
@@ -15,8 +17,8 @@ public class GradeRepository {
     }
 
     public void saveGrade(Grade grade) {
-        Grade save = mongoTemplate.save(grade, "grade");
-        if(save == null) throw new RuntimeException();
+        grade.setTimeFrom(LocalDateTime.now());
+        mongoTemplate.save(grade, "grade");
     }
 
 }

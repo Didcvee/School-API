@@ -1,9 +1,7 @@
 package ru.didcvee.scheduleservice.entity.other;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.yaml.snakeyaml.error.Mark;
+import lombok.*;
+
 
 import java.time.LocalDateTime;
 
@@ -11,25 +9,40 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class Grade {
-
-    private String weekDay;
-    private LocalDateTime timeFrom;
-    private LocalDateTime timeTo;
-    private Mark mark;
-    private String teacherUsername;
-    private String subject;
-    private String studentUsername;
+    private String objectId;
 
     @Override
     public String toString() {
         return "Grade{" +
-                "weekDay='" + weekDay + '\'' +
+                "objectId='" + objectId + '\'' +
+                ", lessonId=" + lessonId +
+                ", weekDay='" + weekDay + '\'' +
                 ", timeFrom=" + timeFrom +
-                ", timeTo=" + timeTo +
+                ", date=" + date +
                 ", mark=" + mark +
                 ", teacherUsername='" + teacherUsername + '\'' +
                 ", subject='" + subject + '\'' +
                 ", studentUsername='" + studentUsername + '\'' +
                 '}';
     }
+
+    private int lessonId;
+    private String weekDay;
+    private LocalDateTime timeFrom;
+    private LocalDateTime date;
+    private Mark mark;
+    private String teacherUsername;
+    private String subject;
+    private String studentUsername;
+    private String groupNumber;
+
+    public Grade(Mark mark, String teacherUsername) {
+        this.mark = mark;
+        this.teacherUsername = teacherUsername;
+    }
+
+    public Grade(String weekDay) {
+        this.weekDay = weekDay;
+    }
+
 }

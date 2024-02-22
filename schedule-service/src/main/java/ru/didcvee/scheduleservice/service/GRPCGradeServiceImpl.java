@@ -3,6 +3,7 @@ package ru.didcvee.scheduleservice.service;
 import com.example.grpccommon.service.GradeListResponse;
 import com.example.grpccommon.service.GradeServerGrpc;
 import com.example.grpccommon.service.GrpcGradeRequestFromStudent;
+import com.example.grpccommon.service.GrpcGradeRequestFromTeacher;
 import com.google.protobuf.Timestamp;
 import lombok.RequiredArgsConstructor;
 import net.devh.boot.grpc.client.inject.GrpcClient;
@@ -19,12 +20,30 @@ public class GRPCGradeServiceImpl implements GRPCGradeService{
 
 
     @Override
-    public GradeListResponse get(String studentUsername, Timestamp dateFrom, Timestamp dateTo) {
-        GrpcGradeRequestFromStudent request1 = GrpcGradeRequestFromStudent.newBuilder()
-                .setStudentUsername("Artem")
+    public GradeListResponse getGradeByTeacherUsername(String teacherUsername,
+                                                       Timestamp dateFrom,
+                                                       Timestamp dateTo,
+                                                       String subject,
+                                                       String groupNumber) {
+        GrpcGradeRequestFromTeacher request = GrpcGradeRequestFromTeacher.newBuilder()
+                .setTeacherUsername(teacherUsername)
+                .setDateFrom(dateFrom)
+                .setDateTo(dateTo)
+                .setSubject(subject)
+                .setGroup(groupNumber)
+                .build();
+        return stub.getGradeFromTeacherByGroupAndSubjectDateFromDateTo(request);
+    }
+
+    @Override
+    public GradeListResponse getGradeByStudentUsername(String studentUsername,
+                                 Timestamp dateFrom,
+                                 Timestamp dateTo) {
+        GrpcGradeRequestFromStudent request = GrpcGradeRequestFromStudent.newBuilder()
+                .setStudentUsername(studentUsername)
                 .setDateFrom(dateFrom)
                 .setDateTo(dateTo)
                 .build();
-        return stub.getGradeFromStudentByDateFromDateTo(request1);
+        return stub.getGradeFromStudentByDateFromDateTo(request);
     }
 }

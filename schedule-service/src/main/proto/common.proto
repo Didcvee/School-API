@@ -18,8 +18,16 @@ service GradeServer {
 }
 
 message GRPCGrade {
-  int64 id = 1;
-  string mark = 2;
+  int64 lessonId = 6;
+  string objectId = 1;
+  string teacherUsername = 2;
+  string mark = 3;
+  string studentUsername = 4;
+  google.protobuf.Timestamp timeFrom = 9;
+  google.protobuf.Timestamp date = 5;
+  string groupNumber = 10;
+  string subjectName = 7;
+  string weekDay = 8;
 }
 
 message GrpcGradeRequestFromStudent {

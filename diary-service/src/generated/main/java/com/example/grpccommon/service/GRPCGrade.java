@@ -16,7 +16,13 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private GRPCGrade() {
+    objectId_ = "";
+    teacherUsername_ = "";
     mark_ = "";
+    studentUsername_ = "";
+    subjectName_ = "";
+    groupNumber_ = "";
+    weekDay_ = "";
   }
 
   @java.lang.Override
@@ -39,22 +45,100 @@ private static final long serialVersionUID = 0L;
             com.example.grpccommon.service.GRPCGrade.class, com.example.grpccommon.service.GRPCGrade.Builder.class);
   }
 
-  public static final int ID_FIELD_NUMBER = 1;
-  private long id_ = 0L;
+  public static final int LESSONID_FIELD_NUMBER = 6;
+  private long lessonId_ = 0L;
   /**
-   * <code>int64 id = 1;</code>
-   * @return The id.
+   * <code>int64 lessonId = 6;</code>
+   * @return The lessonId.
    */
   @java.lang.Override
-  public long getId() {
-    return id_;
+  public long getLessonId() {
+    return lessonId_;
   }
 
-  public static final int MARK_FIELD_NUMBER = 2;
+  public static final int OBJECTID_FIELD_NUMBER = 1;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object objectId_ = "";
+  /**
+   * <code>string objectId = 1;</code>
+   * @return The objectId.
+   */
+  @java.lang.Override
+  public java.lang.String getObjectId() {
+    java.lang.Object ref = objectId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      objectId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string objectId = 1;</code>
+   * @return The bytes for objectId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getObjectIdBytes() {
+    java.lang.Object ref = objectId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      objectId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TEACHERUSERNAME_FIELD_NUMBER = 2;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object teacherUsername_ = "";
+  /**
+   * <code>string teacherUsername = 2;</code>
+   * @return The teacherUsername.
+   */
+  @java.lang.Override
+  public java.lang.String getTeacherUsername() {
+    java.lang.Object ref = teacherUsername_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      teacherUsername_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string teacherUsername = 2;</code>
+   * @return The bytes for teacherUsername.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getTeacherUsernameBytes() {
+    java.lang.Object ref = teacherUsername_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      teacherUsername_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MARK_FIELD_NUMBER = 3;
   @SuppressWarnings("serial")
   private volatile java.lang.Object mark_ = "";
   /**
-   * <code>string mark = 2;</code>
+   * <code>string mark = 3;</code>
    * @return The mark.
    */
   @java.lang.Override
@@ -71,7 +155,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string mark = 2;</code>
+   * <code>string mark = 3;</code>
    * @return The bytes for mark.
    */
   @java.lang.Override
@@ -83,6 +167,214 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       mark_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STUDENTUSERNAME_FIELD_NUMBER = 4;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object studentUsername_ = "";
+  /**
+   * <code>string studentUsername = 4;</code>
+   * @return The studentUsername.
+   */
+  @java.lang.Override
+  public java.lang.String getStudentUsername() {
+    java.lang.Object ref = studentUsername_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      studentUsername_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string studentUsername = 4;</code>
+   * @return The bytes for studentUsername.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getStudentUsernameBytes() {
+    java.lang.Object ref = studentUsername_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      studentUsername_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TIMEFROM_FIELD_NUMBER = 9;
+  private com.google.protobuf.Timestamp timeFrom_;
+  /**
+   * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+   * @return Whether the timeFrom field is set.
+   */
+  @java.lang.Override
+  public boolean hasTimeFrom() {
+    return timeFrom_ != null;
+  }
+  /**
+   * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+   * @return The timeFrom.
+   */
+  @java.lang.Override
+  public com.google.protobuf.Timestamp getTimeFrom() {
+    return timeFrom_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timeFrom_;
+  }
+  /**
+   * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+   */
+  @java.lang.Override
+  public com.google.protobuf.TimestampOrBuilder getTimeFromOrBuilder() {
+    return timeFrom_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timeFrom_;
+  }
+
+  public static final int DATE_FIELD_NUMBER = 5;
+  private com.google.protobuf.Timestamp date_;
+  /**
+   * <code>.google.protobuf.Timestamp date = 5;</code>
+   * @return Whether the date field is set.
+   */
+  @java.lang.Override
+  public boolean hasDate() {
+    return date_ != null;
+  }
+  /**
+   * <code>.google.protobuf.Timestamp date = 5;</code>
+   * @return The date.
+   */
+  @java.lang.Override
+  public com.google.protobuf.Timestamp getDate() {
+    return date_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : date_;
+  }
+  /**
+   * <code>.google.protobuf.Timestamp date = 5;</code>
+   */
+  @java.lang.Override
+  public com.google.protobuf.TimestampOrBuilder getDateOrBuilder() {
+    return date_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : date_;
+  }
+
+  public static final int SUBJECTNAME_FIELD_NUMBER = 7;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object subjectName_ = "";
+  /**
+   * <code>string subjectName = 7;</code>
+   * @return The subjectName.
+   */
+  @java.lang.Override
+  public java.lang.String getSubjectName() {
+    java.lang.Object ref = subjectName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      subjectName_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string subjectName = 7;</code>
+   * @return The bytes for subjectName.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getSubjectNameBytes() {
+    java.lang.Object ref = subjectName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      subjectName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int GROUPNUMBER_FIELD_NUMBER = 10;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object groupNumber_ = "";
+  /**
+   * <code>string groupNumber = 10;</code>
+   * @return The groupNumber.
+   */
+  @java.lang.Override
+  public java.lang.String getGroupNumber() {
+    java.lang.Object ref = groupNumber_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      groupNumber_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string groupNumber = 10;</code>
+   * @return The bytes for groupNumber.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getGroupNumberBytes() {
+    java.lang.Object ref = groupNumber_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      groupNumber_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int WEEKDAY_FIELD_NUMBER = 8;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object weekDay_ = "";
+  /**
+   * <code>string weekDay = 8;</code>
+   * @return The weekDay.
+   */
+  @java.lang.Override
+  public java.lang.String getWeekDay() {
+    java.lang.Object ref = weekDay_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      weekDay_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string weekDay = 8;</code>
+   * @return The bytes for weekDay.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getWeekDayBytes() {
+    java.lang.Object ref = weekDay_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      weekDay_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -103,11 +395,35 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (id_ != 0L) {
-      output.writeInt64(1, id_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(objectId_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, objectId_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(teacherUsername_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, teacherUsername_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(mark_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, mark_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, mark_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(studentUsername_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, studentUsername_);
+    }
+    if (date_ != null) {
+      output.writeMessage(5, getDate());
+    }
+    if (lessonId_ != 0L) {
+      output.writeInt64(6, lessonId_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(subjectName_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, subjectName_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(weekDay_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, weekDay_);
+    }
+    if (timeFrom_ != null) {
+      output.writeMessage(9, getTimeFrom());
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(groupNumber_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, groupNumber_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -118,12 +434,38 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (id_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, id_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(objectId_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, objectId_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(teacherUsername_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, teacherUsername_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(mark_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, mark_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, mark_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(studentUsername_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, studentUsername_);
+    }
+    if (date_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, getDate());
+    }
+    if (lessonId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(6, lessonId_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(subjectName_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, subjectName_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(weekDay_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, weekDay_);
+    }
+    if (timeFrom_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(9, getTimeFrom());
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(groupNumber_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, groupNumber_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -140,10 +482,32 @@ private static final long serialVersionUID = 0L;
     }
     com.example.grpccommon.service.GRPCGrade other = (com.example.grpccommon.service.GRPCGrade) obj;
 
-    if (getId()
-        != other.getId()) return false;
+    if (getLessonId()
+        != other.getLessonId()) return false;
+    if (!getObjectId()
+        .equals(other.getObjectId())) return false;
+    if (!getTeacherUsername()
+        .equals(other.getTeacherUsername())) return false;
     if (!getMark()
         .equals(other.getMark())) return false;
+    if (!getStudentUsername()
+        .equals(other.getStudentUsername())) return false;
+    if (hasTimeFrom() != other.hasTimeFrom()) return false;
+    if (hasTimeFrom()) {
+      if (!getTimeFrom()
+          .equals(other.getTimeFrom())) return false;
+    }
+    if (hasDate() != other.hasDate()) return false;
+    if (hasDate()) {
+      if (!getDate()
+          .equals(other.getDate())) return false;
+    }
+    if (!getSubjectName()
+        .equals(other.getSubjectName())) return false;
+    if (!getGroupNumber()
+        .equals(other.getGroupNumber())) return false;
+    if (!getWeekDay()
+        .equals(other.getWeekDay())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -155,11 +519,31 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (37 * hash) + LESSONID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getId());
+        getLessonId());
+    hash = (37 * hash) + OBJECTID_FIELD_NUMBER;
+    hash = (53 * hash) + getObjectId().hashCode();
+    hash = (37 * hash) + TEACHERUSERNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getTeacherUsername().hashCode();
     hash = (37 * hash) + MARK_FIELD_NUMBER;
     hash = (53 * hash) + getMark().hashCode();
+    hash = (37 * hash) + STUDENTUSERNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getStudentUsername().hashCode();
+    if (hasTimeFrom()) {
+      hash = (37 * hash) + TIMEFROM_FIELD_NUMBER;
+      hash = (53 * hash) + getTimeFrom().hashCode();
+    }
+    if (hasDate()) {
+      hash = (37 * hash) + DATE_FIELD_NUMBER;
+      hash = (53 * hash) + getDate().hashCode();
+    }
+    hash = (37 * hash) + SUBJECTNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getSubjectName().hashCode();
+    hash = (37 * hash) + GROUPNUMBER_FIELD_NUMBER;
+    hash = (53 * hash) + getGroupNumber().hashCode();
+    hash = (37 * hash) + WEEKDAY_FIELD_NUMBER;
+    hash = (53 * hash) + getWeekDay().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -291,8 +675,24 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      id_ = 0L;
+      lessonId_ = 0L;
+      objectId_ = "";
+      teacherUsername_ = "";
       mark_ = "";
+      studentUsername_ = "";
+      timeFrom_ = null;
+      if (timeFromBuilder_ != null) {
+        timeFromBuilder_.dispose();
+        timeFromBuilder_ = null;
+      }
+      date_ = null;
+      if (dateBuilder_ != null) {
+        dateBuilder_.dispose();
+        dateBuilder_ = null;
+      }
+      subjectName_ = "";
+      groupNumber_ = "";
+      weekDay_ = "";
       return this;
     }
 
@@ -327,10 +727,38 @@ private static final long serialVersionUID = 0L;
     private void buildPartial0(com.example.grpccommon.service.GRPCGrade result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.id_ = id_;
+        result.lessonId_ = lessonId_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.objectId_ = objectId_;
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.teacherUsername_ = teacherUsername_;
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
         result.mark_ = mark_;
+      }
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.studentUsername_ = studentUsername_;
+      }
+      if (((from_bitField0_ & 0x00000020) != 0)) {
+        result.timeFrom_ = timeFromBuilder_ == null
+            ? timeFrom_
+            : timeFromBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000040) != 0)) {
+        result.date_ = dateBuilder_ == null
+            ? date_
+            : dateBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000080) != 0)) {
+        result.subjectName_ = subjectName_;
+      }
+      if (((from_bitField0_ & 0x00000100) != 0)) {
+        result.groupNumber_ = groupNumber_;
+      }
+      if (((from_bitField0_ & 0x00000200) != 0)) {
+        result.weekDay_ = weekDay_;
       }
     }
 
@@ -378,12 +806,48 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.example.grpccommon.service.GRPCGrade other) {
       if (other == com.example.grpccommon.service.GRPCGrade.getDefaultInstance()) return this;
-      if (other.getId() != 0L) {
-        setId(other.getId());
+      if (other.getLessonId() != 0L) {
+        setLessonId(other.getLessonId());
+      }
+      if (!other.getObjectId().isEmpty()) {
+        objectId_ = other.objectId_;
+        bitField0_ |= 0x00000002;
+        onChanged();
+      }
+      if (!other.getTeacherUsername().isEmpty()) {
+        teacherUsername_ = other.teacherUsername_;
+        bitField0_ |= 0x00000004;
+        onChanged();
       }
       if (!other.getMark().isEmpty()) {
         mark_ = other.mark_;
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000008;
+        onChanged();
+      }
+      if (!other.getStudentUsername().isEmpty()) {
+        studentUsername_ = other.studentUsername_;
+        bitField0_ |= 0x00000010;
+        onChanged();
+      }
+      if (other.hasTimeFrom()) {
+        mergeTimeFrom(other.getTimeFrom());
+      }
+      if (other.hasDate()) {
+        mergeDate(other.getDate());
+      }
+      if (!other.getSubjectName().isEmpty()) {
+        subjectName_ = other.subjectName_;
+        bitField0_ |= 0x00000080;
+        onChanged();
+      }
+      if (!other.getGroupNumber().isEmpty()) {
+        groupNumber_ = other.groupNumber_;
+        bitField0_ |= 0x00000100;
+        onChanged();
+      }
+      if (!other.getWeekDay().isEmpty()) {
+        weekDay_ = other.weekDay_;
+        bitField0_ |= 0x00000200;
         onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -412,16 +876,60 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              id_ = input.readInt64();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 18: {
-              mark_ = input.readStringRequireUtf8();
+            case 10: {
+              objectId_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000002;
               break;
+            } // case 10
+            case 18: {
+              teacherUsername_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000004;
+              break;
             } // case 18
+            case 26: {
+              mark_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 26
+            case 34: {
+              studentUsername_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 34
+            case 42: {
+              input.readMessage(
+                  getDateFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000040;
+              break;
+            } // case 42
+            case 48: {
+              lessonId_ = input.readInt64();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 48
+            case 58: {
+              subjectName_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000080;
+              break;
+            } // case 58
+            case 66: {
+              weekDay_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000200;
+              break;
+            } // case 66
+            case 74: {
+              input.readMessage(
+                  getTimeFromFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 74
+            case 82: {
+              groupNumber_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000100;
+              break;
+            } // case 82
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -439,41 +947,185 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private long id_ ;
+    private long lessonId_ ;
     /**
-     * <code>int64 id = 1;</code>
-     * @return The id.
+     * <code>int64 lessonId = 6;</code>
+     * @return The lessonId.
      */
     @java.lang.Override
-    public long getId() {
-      return id_;
+    public long getLessonId() {
+      return lessonId_;
     }
     /**
-     * <code>int64 id = 1;</code>
-     * @param value The id to set.
+     * <code>int64 lessonId = 6;</code>
+     * @param value The lessonId to set.
      * @return This builder for chaining.
      */
-    public Builder setId(long value) {
+    public Builder setLessonId(long value) {
 
-      id_ = value;
+      lessonId_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 id = 1;</code>
+     * <code>int64 lessonId = 6;</code>
      * @return This builder for chaining.
      */
-    public Builder clearId() {
+    public Builder clearLessonId() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      id_ = 0L;
+      lessonId_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object objectId_ = "";
+    /**
+     * <code>string objectId = 1;</code>
+     * @return The objectId.
+     */
+    public java.lang.String getObjectId() {
+      java.lang.Object ref = objectId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        objectId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string objectId = 1;</code>
+     * @return The bytes for objectId.
+     */
+    public com.google.protobuf.ByteString
+        getObjectIdBytes() {
+      java.lang.Object ref = objectId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        objectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string objectId = 1;</code>
+     * @param value The objectId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setObjectId(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      objectId_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string objectId = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearObjectId() {
+      objectId_ = getDefaultInstance().getObjectId();
+      bitField0_ = (bitField0_ & ~0x00000002);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string objectId = 1;</code>
+     * @param value The bytes for objectId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setObjectIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      objectId_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object teacherUsername_ = "";
+    /**
+     * <code>string teacherUsername = 2;</code>
+     * @return The teacherUsername.
+     */
+    public java.lang.String getTeacherUsername() {
+      java.lang.Object ref = teacherUsername_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        teacherUsername_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string teacherUsername = 2;</code>
+     * @return The bytes for teacherUsername.
+     */
+    public com.google.protobuf.ByteString
+        getTeacherUsernameBytes() {
+      java.lang.Object ref = teacherUsername_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        teacherUsername_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string teacherUsername = 2;</code>
+     * @param value The teacherUsername to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTeacherUsername(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      teacherUsername_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string teacherUsername = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTeacherUsername() {
+      teacherUsername_ = getDefaultInstance().getTeacherUsername();
+      bitField0_ = (bitField0_ & ~0x00000004);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string teacherUsername = 2;</code>
+     * @param value The bytes for teacherUsername to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTeacherUsernameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      teacherUsername_ = value;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
 
     private java.lang.Object mark_ = "";
     /**
-     * <code>string mark = 2;</code>
+     * <code>string mark = 3;</code>
      * @return The mark.
      */
     public java.lang.String getMark() {
@@ -489,7 +1141,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string mark = 2;</code>
+     * <code>string mark = 3;</code>
      * @return The bytes for mark.
      */
     public com.google.protobuf.ByteString
@@ -506,7 +1158,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string mark = 2;</code>
+     * <code>string mark = 3;</code>
      * @param value The mark to set.
      * @return This builder for chaining.
      */
@@ -514,22 +1166,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       mark_ = value;
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
     /**
-     * <code>string mark = 2;</code>
+     * <code>string mark = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearMark() {
       mark_ = getDefaultInstance().getMark();
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000008);
       onChanged();
       return this;
     }
     /**
-     * <code>string mark = 2;</code>
+     * <code>string mark = 3;</code>
      * @param value The bytes for mark to set.
      * @return This builder for chaining.
      */
@@ -538,7 +1190,533 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       mark_ = value;
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object studentUsername_ = "";
+    /**
+     * <code>string studentUsername = 4;</code>
+     * @return The studentUsername.
+     */
+    public java.lang.String getStudentUsername() {
+      java.lang.Object ref = studentUsername_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        studentUsername_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string studentUsername = 4;</code>
+     * @return The bytes for studentUsername.
+     */
+    public com.google.protobuf.ByteString
+        getStudentUsernameBytes() {
+      java.lang.Object ref = studentUsername_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        studentUsername_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string studentUsername = 4;</code>
+     * @param value The studentUsername to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStudentUsername(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      studentUsername_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string studentUsername = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStudentUsername() {
+      studentUsername_ = getDefaultInstance().getStudentUsername();
+      bitField0_ = (bitField0_ & ~0x00000010);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string studentUsername = 4;</code>
+     * @param value The bytes for studentUsername to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStudentUsernameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      studentUsername_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.Timestamp timeFrom_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> timeFromBuilder_;
+    /**
+     * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+     * @return Whether the timeFrom field is set.
+     */
+    public boolean hasTimeFrom() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+     * @return The timeFrom.
+     */
+    public com.google.protobuf.Timestamp getTimeFrom() {
+      if (timeFromBuilder_ == null) {
+        return timeFrom_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timeFrom_;
+      } else {
+        return timeFromBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+     */
+    public Builder setTimeFrom(com.google.protobuf.Timestamp value) {
+      if (timeFromBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        timeFrom_ = value;
+      } else {
+        timeFromBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+     */
+    public Builder setTimeFrom(
+        com.google.protobuf.Timestamp.Builder builderForValue) {
+      if (timeFromBuilder_ == null) {
+        timeFrom_ = builderForValue.build();
+      } else {
+        timeFromBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+     */
+    public Builder mergeTimeFrom(com.google.protobuf.Timestamp value) {
+      if (timeFromBuilder_ == null) {
+        if (((bitField0_ & 0x00000020) != 0) &&
+          timeFrom_ != null &&
+          timeFrom_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+          getTimeFromBuilder().mergeFrom(value);
+        } else {
+          timeFrom_ = value;
+        }
+      } else {
+        timeFromBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+     */
+    public Builder clearTimeFrom() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      timeFrom_ = null;
+      if (timeFromBuilder_ != null) {
+        timeFromBuilder_.dispose();
+        timeFromBuilder_ = null;
+      }
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+     */
+    public com.google.protobuf.Timestamp.Builder getTimeFromBuilder() {
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return getTimeFromFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+     */
+    public com.google.protobuf.TimestampOrBuilder getTimeFromOrBuilder() {
+      if (timeFromBuilder_ != null) {
+        return timeFromBuilder_.getMessageOrBuilder();
+      } else {
+        return timeFrom_ == null ?
+            com.google.protobuf.Timestamp.getDefaultInstance() : timeFrom_;
+      }
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timeFrom = 9;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+        getTimeFromFieldBuilder() {
+      if (timeFromBuilder_ == null) {
+        timeFromBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                getTimeFrom(),
+                getParentForChildren(),
+                isClean());
+        timeFrom_ = null;
+      }
+      return timeFromBuilder_;
+    }
+
+    private com.google.protobuf.Timestamp date_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> dateBuilder_;
+    /**
+     * <code>.google.protobuf.Timestamp date = 5;</code>
+     * @return Whether the date field is set.
+     */
+    public boolean hasDate() {
+      return ((bitField0_ & 0x00000040) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Timestamp date = 5;</code>
+     * @return The date.
+     */
+    public com.google.protobuf.Timestamp getDate() {
+      if (dateBuilder_ == null) {
+        return date_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : date_;
+      } else {
+        return dateBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.google.protobuf.Timestamp date = 5;</code>
+     */
+    public Builder setDate(com.google.protobuf.Timestamp value) {
+      if (dateBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        date_ = value;
+      } else {
+        dateBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000040;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp date = 5;</code>
+     */
+    public Builder setDate(
+        com.google.protobuf.Timestamp.Builder builderForValue) {
+      if (dateBuilder_ == null) {
+        date_ = builderForValue.build();
+      } else {
+        dateBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000040;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp date = 5;</code>
+     */
+    public Builder mergeDate(com.google.protobuf.Timestamp value) {
+      if (dateBuilder_ == null) {
+        if (((bitField0_ & 0x00000040) != 0) &&
+          date_ != null &&
+          date_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+          getDateBuilder().mergeFrom(value);
+        } else {
+          date_ = value;
+        }
+      } else {
+        dateBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000040;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp date = 5;</code>
+     */
+    public Builder clearDate() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      date_ = null;
+      if (dateBuilder_ != null) {
+        dateBuilder_.dispose();
+        dateBuilder_ = null;
+      }
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp date = 5;</code>
+     */
+    public com.google.protobuf.Timestamp.Builder getDateBuilder() {
+      bitField0_ |= 0x00000040;
+      onChanged();
+      return getDateFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.google.protobuf.Timestamp date = 5;</code>
+     */
+    public com.google.protobuf.TimestampOrBuilder getDateOrBuilder() {
+      if (dateBuilder_ != null) {
+        return dateBuilder_.getMessageOrBuilder();
+      } else {
+        return date_ == null ?
+            com.google.protobuf.Timestamp.getDefaultInstance() : date_;
+      }
+    }
+    /**
+     * <code>.google.protobuf.Timestamp date = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+        getDateFieldBuilder() {
+      if (dateBuilder_ == null) {
+        dateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                getDate(),
+                getParentForChildren(),
+                isClean());
+        date_ = null;
+      }
+      return dateBuilder_;
+    }
+
+    private java.lang.Object subjectName_ = "";
+    /**
+     * <code>string subjectName = 7;</code>
+     * @return The subjectName.
+     */
+    public java.lang.String getSubjectName() {
+      java.lang.Object ref = subjectName_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        subjectName_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string subjectName = 7;</code>
+     * @return The bytes for subjectName.
+     */
+    public com.google.protobuf.ByteString
+        getSubjectNameBytes() {
+      java.lang.Object ref = subjectName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        subjectName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string subjectName = 7;</code>
+     * @param value The subjectName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSubjectName(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      subjectName_ = value;
+      bitField0_ |= 0x00000080;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string subjectName = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSubjectName() {
+      subjectName_ = getDefaultInstance().getSubjectName();
+      bitField0_ = (bitField0_ & ~0x00000080);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string subjectName = 7;</code>
+     * @param value The bytes for subjectName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSubjectNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      subjectName_ = value;
+      bitField0_ |= 0x00000080;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object groupNumber_ = "";
+    /**
+     * <code>string groupNumber = 10;</code>
+     * @return The groupNumber.
+     */
+    public java.lang.String getGroupNumber() {
+      java.lang.Object ref = groupNumber_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        groupNumber_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string groupNumber = 10;</code>
+     * @return The bytes for groupNumber.
+     */
+    public com.google.protobuf.ByteString
+        getGroupNumberBytes() {
+      java.lang.Object ref = groupNumber_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        groupNumber_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string groupNumber = 10;</code>
+     * @param value The groupNumber to set.
+     * @return This builder for chaining.
+     */
+    public Builder setGroupNumber(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      groupNumber_ = value;
+      bitField0_ |= 0x00000100;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string groupNumber = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearGroupNumber() {
+      groupNumber_ = getDefaultInstance().getGroupNumber();
+      bitField0_ = (bitField0_ & ~0x00000100);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string groupNumber = 10;</code>
+     * @param value The bytes for groupNumber to set.
+     * @return This builder for chaining.
+     */
+    public Builder setGroupNumberBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      groupNumber_ = value;
+      bitField0_ |= 0x00000100;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object weekDay_ = "";
+    /**
+     * <code>string weekDay = 8;</code>
+     * @return The weekDay.
+     */
+    public java.lang.String getWeekDay() {
+      java.lang.Object ref = weekDay_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        weekDay_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string weekDay = 8;</code>
+     * @return The bytes for weekDay.
+     */
+    public com.google.protobuf.ByteString
+        getWeekDayBytes() {
+      java.lang.Object ref = weekDay_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        weekDay_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string weekDay = 8;</code>
+     * @param value The weekDay to set.
+     * @return This builder for chaining.
+     */
+    public Builder setWeekDay(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      weekDay_ = value;
+      bitField0_ |= 0x00000200;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string weekDay = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearWeekDay() {
+      weekDay_ = getDefaultInstance().getWeekDay();
+      bitField0_ = (bitField0_ & ~0x00000200);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string weekDay = 8;</code>
+     * @param value The bytes for weekDay to set.
+     * @return This builder for chaining.
+     */
+    public Builder setWeekDayBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      weekDay_ = value;
+      bitField0_ |= 0x00000200;
       onChanged();
       return this;
     }

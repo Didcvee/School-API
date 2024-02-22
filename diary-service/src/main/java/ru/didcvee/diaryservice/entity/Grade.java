@@ -1,5 +1,6 @@
 package ru.didcvee.diaryservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,22 +13,39 @@ import java.util.Date;
 @Getter
 @Setter
 public class Grade {
-    private ObjectId id;
+    private ObjectId _id;
 
     @Override
     public String toString() {
         return "Grade{" +
-                "id=" + id +
+                "objectId=" + _id +
+                ", lessonId=" + lessonId +
+                ", weekDay='" + weekDay + '\'' +
+                ", timeFrom=" + timeFrom +
+                ", date=" + date +
+                ", mark=" + mark +
+                ", teacherUsername='" + teacherUsername + '\'' +
+                ", subject='" + subject + '\'' +
                 ", studentUsername='" + studentUsername + '\'' +
-                ", subjectName='" + subjectName + '\'' +
                 '}';
     }
 
-    //    private int ids;
-//    private String weekDay;
-//    private LocalDateTime timeFrom;
-//    private Mark mark;
-//    private String teacherUsername;
+    private int lessonId;
+    private String weekDay;
+    private LocalDateTime timeFrom;
+    private LocalDateTime date;
+    private Mark mark;
+    private String teacherUsername;
+    private String subject;
     private String studentUsername;
-    private String subjectName;
+    private String groupNumber;
+
+    public Grade(Mark mark, String teacherUsername) {
+        this.mark = mark;
+        this.teacherUsername = teacherUsername;
+    }
+
+    public Grade(String weekDay) {
+        this.weekDay = weekDay;
+    }
 }

@@ -1,5 +1,6 @@
 package ru.didcvee.diaryservice.repo;
 
+import com.google.protobuf.Timestamp;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import ru.didcvee.diaryservice.entity.Grade;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.List;
@@ -20,42 +22,33 @@ public class GradeRepository {
     public GradeRepository(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
     }
-    public List<Grade> getGradeByStudentIdDateFromDateTo(String studentUsername,
-                                                         LocalDateTime dateFrom,
-                                                         LocalDateTime dateTo) {
+    public List<Grade> findGradeByStudentAndTimeRange(String studentUsername, Timestamp startTime, Timestamp endTime) {
+        Query query = new Query()
+                .addCriteria(Criteria
+                        .where("studentUsername").is(studentUsername)
+                .and("date")
+                        .gte(convert(startTime))
+                        .lt(convert(endTime)));
 
-        Date fromDate = Date.from(dateFrom.atZone(ZoneOffset.UTC).toInstant());
-        Date toDate = Date.from(dateTo.atZone(ZoneOffset.UTC).toInstant());
-
-        System.out.println(fromDate);
-
-        Query query = new Query(Criteria.where("studentUsername").is(studentUsername)
-                .andOperator(
-                        Criteria.where("timeFrom.seconds").gte(fromDate.getTime() / 1000),
-                        Criteria.where("timeFrom.seconds").lte(toDate.getTime() / 1000)
-                ));
-
-        System.out.println(query);
-
-        List<Grade> documents = mongoTemplate.find(query, Grade.class);
-        System.out.println(documents);
-        return null;
-
+        return mongoTemplate.find(query, Grade.class);
     }
 
 
     public List<Grade> getGradeByTeacherHisGroupAndSubjectDateFromDateTo(String teacherUsername,
                                                                          String subject,
-                                                                         int groupNumber,
-                                                                         LocalDateTime dateFrom,
-                                                                         LocalDateTime dateTo) {
-
+                                                                         String groupNumber,
+                                                                         Timestamp startTime,
+                                                                         Timestamp endTime) {
         Query query = new Query(Criteria.where("teacherUsername").is(teacherUsername)
-                .and("subjectName").is(subject)
+                .and("subject").is(subject)
                 .and("groupNumber").is(groupNumber)
-                .and("timeFrom").gte(dateFrom).lte(dateTo));
+                .and("date").gte(convert(startTime)).lte(convert(endTime)));
 
         return mongoTemplate.find(query, Grade.class);
+    }
+    public static Date convert(Timestamp timestamp) {
+        long milliseconds = (timestamp.getSeconds() * 1000) + (timestamp.getNanos() / 1000000);
+        return new Date(milliseconds);
     }
 
 }

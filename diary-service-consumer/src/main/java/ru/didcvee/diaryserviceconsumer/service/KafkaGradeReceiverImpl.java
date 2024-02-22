@@ -6,6 +6,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.kafka.receiver.KafkaReceiver;
+import ru.didcvee.diaryserviceconsumer.config.LocalDateTimeAdapter;
 import ru.didcvee.diaryserviceconsumer.config.LocalDateTimeDeserializer;
 import ru.didcvee.diaryserviceconsumer.entity.Grade;
 
@@ -26,7 +27,7 @@ public class KafkaGradeReceiverImpl implements KafkaGradeReceiver {
     public void fetch() {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class,
-                        localDateTimeDeserializer)
+                        new LocalDateTimeDeserializer())
                 .create();
         receiver.receive()
                 .subscribe(r -> {

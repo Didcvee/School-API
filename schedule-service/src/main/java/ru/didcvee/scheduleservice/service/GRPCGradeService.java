@@ -6,5 +6,13 @@ import ru.didcvee.scheduleservice.entity.other.Grade;
 import ru.didcvee.scheduleservice.entity.other.GradeRequest;
 
 public interface GRPCGradeService {
-    GradeListResponse get(String studentUsername, Timestamp dateFrom, Timestamp dateTo);
+    GradeListResponse getGradeByStudentUsername(String studentUsername,
+                                                Timestamp dateFrom,
+                                                Timestamp dateTo);
+
+    GradeListResponse getGradeByTeacherUsername(String teacherUsername,
+                                                Timestamp dateFrom,
+                                                Timestamp dateTo,
+                                                String subject,
+                                                String groupNumber);
 }
