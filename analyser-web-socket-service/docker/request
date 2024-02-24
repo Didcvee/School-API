@@ -1,0 +1,3 @@
+Invoke-WebRequest -Method POST -Uri http://localhost:8083/connectors/ `
+  -Headers @{"Accept"="application/json"; "Content-Type"="application/json"} `
+  -InFile "register-mongodb.json"

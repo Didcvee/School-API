@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/diary-service/diary-service.iml" filepath="$PROJECT_DIR$/diary-service/diary-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/diary-service-consumer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/diary-service-consumer.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/diary-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/diary-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/dictionary-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/dictionary-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/identity-service/identity-service.iml" filepath="$PROJECT_DIR$/identity-service/identity-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/jwt-apigateway-security-main.iml" filepath="$PROJECT_DIR$/.idea/jwt-apigateway-security-main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/main-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/main-service.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/schedule-service/schedule-service.iml" filepath="$PROJECT_DIR$/schedule-service/schedule-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/schedule-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/schedule-service.main.iml" />
     </modules>
   </component>

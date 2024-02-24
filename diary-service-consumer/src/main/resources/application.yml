@@ -8,6 +8,9 @@ spring:
       database: grade
       port: 27017
       host: localhost
+  flyway:
+    url: mongodb://localhost:27017
+    locations: classpath:db/migration
 
 server:
   port: 8082

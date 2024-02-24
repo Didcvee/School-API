@@ -2,7 +2,7 @@
 <h3 align="center"></h3>
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="train/14.png" alt="Logo" >
+    <img src="for_readme/14.png" alt="Logo" >
   </a>
 
 <h3 align="center"></h3>
