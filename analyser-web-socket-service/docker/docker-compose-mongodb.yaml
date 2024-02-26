@@ -3,6 +3,8 @@ version: '2'
 volumes:
   kafka-data:
     driver: local
+  redis-data:
+    driver: local
 
 
 services:
@@ -58,3 +60,13 @@ services:
      JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
     depends_on:
      - "kafka"
+
+  redis:
+    image: redis:7.2-rc-alpine
+    env_file:
+      - .env
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - redis-data:/data

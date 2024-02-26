@@ -1,0 +1,5 @@
+consumer:
+  groupId: "1"
+  keyDeserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+  valueDeserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+  trustedPackages: "*"

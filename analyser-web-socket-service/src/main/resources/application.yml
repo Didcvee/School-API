@@ -1,0 +1,16 @@
+topics: data-temperature
+
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  kafka:
+    consumer:
+      bootstrap-servers: kafka:9092
+      auto-offset-reset: earliest
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+server:
+  port: 8090
