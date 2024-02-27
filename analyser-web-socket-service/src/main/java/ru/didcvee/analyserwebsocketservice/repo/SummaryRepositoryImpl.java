@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import ru.didcvee.analyserwebsocketservice.config.RedisSchema;
+import ru.didcvee.analyserwebsocketservice.entity.Grade;
 import ru.didcvee.analyserwebsocketservice.entity.Summary;
 import ru.didcvee.analyserwebsocketservice.entity.SummaryType;
 
@@ -40,6 +41,84 @@ public class SummaryRepositoryImpl implements SummaryRepository {
                 );
             }
 
+        }
+    }
+
+    @Override
+    public void handle(Grade grade) {
+        try (Jedis jedis = jedisPool.getResource()) {
+            if(!jedis.sismember(
+                    RedisSchema.groupKeys(),
+                    grade.getGroupNumber()
+            )) {
+                jedis.sadd(
+                    RedisSchema.groupKeys(),
+                        grade.getGroupNumber()
+                );
+            }
+
+            updateSumAndAvgValue(grade, jedis);
+        }
+    }
+    private void updateSumAndAvgValue(
+            Grade grade,
+            Jedis jedis
+    ) {
+        updateSumValue(grade, jedis);
+        String key = RedisSchema.groupKey(
+          grade.getGroupNumber()
+        );
+        String counter = jedis.hget(
+                key,
+                "counter"
+        );
+        if (counter == null) {
+            counter = String.valueOf(
+              jedis.hset(
+                      key,
+                      "counter",
+                      String.valueOf(1)
+              )
+            );
+        } else {
+            counter = String.valueOf(
+                    jedis.hincrBy(
+                            key,
+                            "counter",
+                            1
+                    )
+            );
+        }
+        String sum = jedis.hget(
+                key,
+                SummaryType.SUM.name().toLowerCase()
+        );
+        jedis.hset(
+                key,
+                SummaryType.AVG.name().toLowerCase(),
+                String.valueOf(
+                        Double.parseDouble(sum) / Double.parseDouble(counter)
+                )
+        );
+    }
+    private void updateSumValue(Grade grade, Jedis jedis) {
+        String key = RedisSchema.groupKey(grade.getGroupNumber());
+        String value = jedis.hget(
+                key,
+                SummaryType.SUM.name().toLowerCase()
+        );
+        if (value == null) {
+            jedis.hset(
+                    key,
+                    SummaryType.SUM.name().toLowerCase(),
+                    String.valueOf(grade.getMark().getValue())
+            );
+        } else {
+            jedis.hincrByFloat(
+                    key,
+                    SummaryType.SUM.name().toLowerCase(),
+                    grade.getMark().getValue()
+            );
         }
     }
 

@@ -10,4 +10,8 @@ import java.util.Set;
 public interface SummaryService {
     Summary get(String groupName, Set<SummaryType> summaryTypes);
 
+    void handle(
+            Grade grade
+    );
+
 }

@@ -2,6 +2,7 @@ package ru.didcvee.analyserwebsocketservice.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.didcvee.analyserwebsocketservice.entity.Grade;
 import ru.didcvee.analyserwebsocketservice.entity.Summary;
 import ru.didcvee.analyserwebsocketservice.entity.SummaryType;
 import ru.didcvee.analyserwebsocketservice.exc.GroupNotFoundException;
@@ -20,5 +21,10 @@ public class SummaryServiceImpl implements SummaryService {
         return summaryRepository.findByGroupName(groupName,
                         summaryTypes == null ? Set.of(SummaryType.values()) : summaryTypes)
                 .orElseThrow(GroupNotFoundException::new);
+    }
+
+    @Override
+    public void handle(Grade grade) {
+        summaryRepository.handle(grade);
     }
 }

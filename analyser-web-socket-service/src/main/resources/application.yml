@@ -5,7 +5,7 @@ spring:
     import: optional:file:.env[.properties]
   kafka:
     consumer:
-      bootstrap-servers: kafka:9092
+      bootstrap-servers: localhos:9092
       auto-offset-reset: earliest
   data:
     redis:

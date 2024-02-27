@@ -8,9 +8,9 @@ import ru.didcvee.analyserwebsocketservice.repo.SummaryRepositoryImpl;
 @Service
 @RequiredArgsConstructor
 public class KafkaGradeServiceImpl implements KafkaGradeService {
-    private final SummaryRepositoryImpl gradeRepository;
+    private final SummaryRepositoryImpl summaryRepository;
     @Override
     public void handle(Grade grade) {
-        System.out.println("GRADE IS: " + grade);
+
     }
 }

@@ -10,4 +10,8 @@ import java.util.Set;
 public interface SummaryRepository {
     Optional<Summary> findByGroupName(String groupName,
                                       Set<SummaryType> summaryTypes);
+    void handle(
+            Grade grade
+    );
+
 }
