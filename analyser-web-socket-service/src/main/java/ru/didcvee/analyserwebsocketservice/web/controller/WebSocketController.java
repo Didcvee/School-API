@@ -5,17 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.didcvee.analyserwebsocketservice.config.WebSocketHandler;
 
 @RequiredArgsConstructor
 @RestController
 public class WebSocketController {
 
-    @Autowired private SimpMessagingTemplate messagingTemplate;
-
-    @MessageMapping("/chat")
-    public void processMessage(@Payload String message) {
-
-        messagingTemplate.convertAndSend("/queue/messages", message);
+    private final WebSocketHandler webSocketHandler;
+    @GetMapping
+    public void processMessage() {
+        int i = 0;
+        i++;
+        webSocketHandler.sendMessageToAll("hello" + i);
     }
 }
